@@ -15,8 +15,5 @@ async def wait_n(n: int, max_delay: int) -> List[int]:
     Spawns n number of random delay with max_delay been the highest
     possible delay.
     """
-    if max_delay == 0:
-        return [0. for _ in range(n)]
-    coroutine = [await wait_random(max_delay) for _ in range(n)]
-    coroutine.sort()
-    return coroutine
+    delays = await asyncio.gather(*(wait_random(max_delay) for _ in range(n)))
+    return delays

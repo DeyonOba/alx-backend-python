@@ -7,7 +7,7 @@ The [`unittest`][1] unit test is python framework that was originally inspired b
 Here a some object-oriented way [`unittest`][1] is been support in Python.
 
 - **test fixture**:
-> pass
+> A test fixture represents the preparation needed to perform one or more tests, and any associated cleanup actions.
 - **test case**:
 > pass
 - **test suite**:
@@ -16,4 +16,5 @@ Here a some object-oriented way [`unittest`][1] is been support in Python.
 > pass
 
 # Reference
-- [1]: <https://docs.python.org/3/library/unittest.html> ("Python unittest documentation")
+
+[1]: <https://docs.python.org/3/library/unittest.html> "Python unittest documentation"

@@ -20,26 +20,27 @@ def setup_database(db_name: str=DB_NAME):
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name VARCHAR(255) NOT NULL,
-            age INTEGER NOT NULL
+            age INTEGER NOT NULL,
+            email VARCHAR(255) UNIQUE NOT NULL
         );
         """
         cursor.execute(query)
 
 def populate_database(db_name: str=DB_NAME):
     users = [
-        ("Alice", 30),
-        ("Bob", 25),
-        ("Charlie", 35)
+        ("Alice", 30, "alice@gmail.com"),
+        ("Bob", 25, "bob@yahoo.com"),
+        ("Charlie", 35, "charlie@gmail.com")
     ]
     with get_db_connection(db_name) as conn:
         cursor: sqlite3.Cursor = conn.cursor()
-
-        cursor.executemany("INSERT INTO users (name, age) VALUES (?, ?);", users)
+        cursor.execute("DELETE FROM users;")
+        cursor.executemany("INSERT INTO users (name, age, email) VALUES (?, ?, ?);", users)
         conn.commit()
 
 if __name__ == "__main__":
     setup_database()
-    populate_database() 
+    populate_database()  # Output: greet
 
     with get_db_connection(DB_NAME) as conn:
         cursor: sqlite3.Cursor = conn.cursor()

@@ -39,7 +39,7 @@ def populate_database(db_name: str=DB_NAME):
 
 if __name__ == "__main__":
     setup_database()
-    populate_database()  # Output: greet
+    populate_database() 
 
     with get_db_connection(DB_NAME) as conn:
         cursor: sqlite3.Cursor = conn.cursor()

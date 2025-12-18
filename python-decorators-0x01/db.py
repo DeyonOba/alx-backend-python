@@ -18,7 +18,7 @@ def setup_database(db_name: str=DB_NAME):
         cursor: sqlite3.Cursor = conn.cursor()
         query = """
         CREATE TABLE IF NOT EXISTS users (
-            user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             name VARCHAR(255) NOT NULL,
             age INTEGER NOT NULL
         );
